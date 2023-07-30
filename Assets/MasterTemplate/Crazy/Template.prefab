@@ -274,7 +274,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a9ca1c5559e6c6547aaafb415b7fdccc, type: 3}
+  - {fileID: 2100000, guid: 3919034455cd6f641980a77b7c0ecd1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -387,6 +387,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bomb: {fileID: 114454383462897410}
   Audio: {fileID: 114915473299363512}
+  ratMaterials:
+  - {fileID: 2100000, guid: 3919034455cd6f641980a77b7c0ecd1d, type: 2}
+  - {fileID: 2100000, guid: a99bc07a04b036741814c549ed8c92a3, type: 2}
+  - {fileID: 2100000, guid: 49ee7002977cdb54a86012d1b480a206, type: 2}
+  - {fileID: 2100000, guid: 8589ce579eb533b4c85317e474bc9046, type: 2}
+  - {fileID: 2100000, guid: eeb2e07d6a6bb3847b734549bb57a30a, type: 2}
+  solveMaterials:
+  - {fileID: 2100000, guid: 329e6956ff065e240868b4db50cc540e, type: 2}
+  - {fileID: 2100000, guid: 93ae569ee614c64459b08eda28ab9c5f, type: 2}
+  - {fileID: 2100000, guid: 347809a51e8220a4ca44f253a4526991, type: 2}
+  - {fileID: 2100000, guid: 5ff5e764ad7593b449d9b9c5768a598e, type: 2}
+  - {fileID: 2100000, guid: a56b385ad3ef4a448a60e4aecb274af2, type: 2}
+  audio: {fileID: 8300000, guid: a503fb3221296db4abf4a1984091e31d, type: 3}
 --- !u!114 &114853960920223876
 MonoBehaviour:
   m_ObjectHideFlags: 1
