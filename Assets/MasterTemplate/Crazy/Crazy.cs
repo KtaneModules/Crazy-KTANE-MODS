@@ -56,7 +56,12 @@ public class Crazy : MonoBehaviour {
 
    void Update () 
    {
-        if (!playingAudio && !ModuleSolved)
+        float bombTime = Bomb.GetTime();
+
+
+        bool timeStarted = startingTime > bombTime;
+
+        if (!playingAudio && !ModuleSolved && timeStarted)
         {
             audioReference = Audio.PlaySoundAtTransformWithRef(audio.name, transform);
             playingAudio = true;
@@ -70,7 +75,7 @@ public class Crazy : MonoBehaviour {
             playingAudio = false;
         }
 
-        if (startingTime <= Bomb.GetTime() || !focused || ModuleSolved)
+        if (!timeStarted || !focused || ModuleSolved)
         {
             return;
         }

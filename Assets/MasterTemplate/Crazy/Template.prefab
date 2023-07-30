@@ -509,7 +509,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5ff5e764ad7593b449d9b9c5768a598e, type: 2}
   - {fileID: 2100000, guid: a56b385ad3ef4a448a60e4aecb274af2, type: 2}
   surface: {fileID: 23346030315178368}
-  audio: {fileID: 8300000, guid: a503fb3221296db4abf4a1984091e31d, type: 3}
+  audio: {fileID: 8300000, guid: 899a03c87ef8230489e4339b60cf5279, type: 3}
 --- !u!114 &114853960920223876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,8 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: template
-  ModuleDisplayName: Template
+  ModuleType: Crazy
+  ModuleDisplayName: Crazy?
   RequiresTimerVisibility: 0
 --- !u!114 &114907837735438752
 MonoBehaviour:
