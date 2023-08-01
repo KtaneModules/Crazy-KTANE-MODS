@@ -22,19 +22,22 @@ public class Crazy : MonoBehaviour {
     private MeshRenderer surface;
 
     [SerializeField]
-    private AudioClip audio;
+    private AudioClip crazyAudio;
+
+    [SerializeField]
+    private AudioClip testAudio;
+
+    bool debug = false;
 
     static int ModuleIdCounter = 1;
-   int ModuleId;
-   private bool ModuleSolved;
+    int ModuleId;
+    private bool ModuleSolved;
 
     private bool focused = false;
     private int startingTime;
     private int goalTime;
 
     private float currentTime;
-    private float audioTime;
-    private float maxAudioTime;
     private bool playingAudio;
     private KMAudio.KMAudioRef audioReference;
 
@@ -42,7 +45,7 @@ public class Crazy : MonoBehaviour {
    {
       ModuleId = ModuleIdCounter++;
       GetComponent<KMSelectable>().OnFocus += delegate () { if (ModuleSolved) { return; } Logging("You are with the rats :D"); focused = true; };
-      GetComponent<KMSelectable>().OnDefocus += delegate () { if (ModuleSolved) { return; } Logging("You have left the rats :("); Logging($"Your total amount of time with the rats has been {FormatTime((int)currentTime)}"); focused = false; };
+      GetComponent<KMSelectable>().OnDefocus += delegate () { if (ModuleSolved) { return; } Logging("You have left the rats :("); Logging($"Your total amount of time with the rats has been {string.Format("{0:0}:{1:00}", (int)currentTime / 60, (int)currentTime % 60)}"); focused = false; };
    }
 
    void Start () 
@@ -57,22 +60,14 @@ public class Crazy : MonoBehaviour {
    void Update () 
    {
         float bombTime = Bomb.GetTime();
-
-
         bool timeStarted = startingTime > bombTime;
 
         if (!playingAudio && !ModuleSolved && timeStarted)
         {
-            audioReference = Audio.PlaySoundAtTransformWithRef(audio.name, transform);
+            Debug.Log("Audio started playing");
+            AudioClip clip = debug ? testAudio : crazyAudio;
             playingAudio = true;
-            maxAudioTime = audio.length;
-        }
-
-        audioTime += Time.deltaTime;
-
-        if (audioTime >= maxAudioTime)
-        {
-            playingAudio = false;
+            audioReference = Audio.PlaySoundAtTransformWithRef(clip.name, transform);
         }
 
         if (!timeStarted || !focused || ModuleSolved)
@@ -87,16 +82,11 @@ public class Crazy : MonoBehaviour {
             Logging("The rats are appeased and will let you go");
             surface.material = solveMaterials[Rnd.Range(0, solveMaterials.Length)];
             playingAudio = false;
+            ModuleSolved = true;
             audioReference.StopSound();
             GetComponent<KMBombModule>().HandlePass();
-            ModuleSolved = true;
         }
    }
-
-    string FormatTime(int seconds)
-    {
-        return string.Format("{0:0}:{1:00}", seconds / 60, seconds % 60);
-    }
 
     void Logging(string log)
     {

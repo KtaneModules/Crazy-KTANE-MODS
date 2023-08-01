@@ -509,7 +509,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5ff5e764ad7593b449d9b9c5768a598e, type: 2}
   - {fileID: 2100000, guid: a56b385ad3ef4a448a60e4aecb274af2, type: 2}
   surface: {fileID: 23346030315178368}
-  audio: {fileID: 8300000, guid: 899a03c87ef8230489e4339b60cf5279, type: 3}
+  crazyAudio: {fileID: 8300000, guid: 899a03c87ef8230489e4339b60cf5279, type: 3}
+  testAudio: {fileID: 8300000, guid: bc65334c8da1de348a9386311e91cdd1, type: 3}
 --- !u!114 &114853960920223876
 MonoBehaviour:
   m_ObjectHideFlags: 1
