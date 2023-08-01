@@ -90,6 +90,14 @@ public class Crazy : MonoBehaviour {
         }
    }
 
+    void OnDestroy()
+    {
+        if (playingAudio)
+        {
+            audioReference.StopSound();
+        }
+    }
+
     void Logging(string log)
     {
         if (log == "")
