@@ -9,8 +9,8 @@ using Rnd = UnityEngine.Random;
 
 public class Crazy : MonoBehaviour {
 
-   public KMBombInfo Bomb;
-   public KMAudio Audio;
+   private KMBombInfo Bomb;
+   private KMAudio Audio;
 
     [SerializeField]
     private Material[] ratMaterials;
@@ -43,9 +43,11 @@ public class Crazy : MonoBehaviour {
 
    void Awake () 
    {
-      ModuleId = ModuleIdCounter++;
-      GetComponent<KMSelectable>().OnFocus += delegate () { if (ModuleSolved) { return; } Logging("You are with the rats :D"); focused = true; };
-      GetComponent<KMSelectable>().OnDefocus += delegate () { if (ModuleSolved) { return; } Logging("You have left the rats :("); Logging($"Your total amount of time with the rats has been {string.Format("{0:0}:{1:00}", (int)currentTime / 60, (int)currentTime % 60)}"); focused = false; };
+        Bomb = GetComponent<KMBombInfo>();
+        Audio = GetComponent<KMAudio>();
+        ModuleId = ModuleIdCounter++;
+        GetComponent<KMSelectable>().OnFocus += delegate () { if (ModuleSolved) { return; } Logging("You are with the rats :D"); focused = true; };
+        GetComponent<KMSelectable>().OnDefocus += delegate () { if (ModuleSolved) { return; } Logging("You have left the rats :("); Logging($"Your total amount of time with the rats has been {string.Format("{0:0}:{1:00}", (int)currentTime / 60, (int)currentTime % 60)}"); focused = false; };
    }
 
    void Start () 
