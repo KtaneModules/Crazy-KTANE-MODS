@@ -109,14 +109,24 @@ public class Crazy : MonoBehaviour {
     }
 
 #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"Use !{0} to do something.";
+    private readonly string TwitchHelpMessage = @"!{0} rats [Be with the rats]";
 #pragma warning restore 414
 
    IEnumerator ProcessTwitchCommand (string Command) {
-      yield return null;
+       if (Command.EqualsIgnoreCase("rats"))
+       {
+           yield return null;
+           while (!ModuleSolved) yield return "trycancel Halted being with the rats due to a cancel request.";
+       }
    }
 
-   IEnumerator TwitchHandleForcedSolve () {
-      yield return null;
+   void TwitchHandleForcedSolve () {
+       StartCoroutine(HandleCrazySolve());
+   }
+   
+   IEnumerator HandleCrazySolve() { 
+       GetComponent<KMSelectable>().OnFocus();
+       while (!ModuleSolved) yield return null;
+       GetComponent<KMSelectable>().OnDefocus();
    }
 }
